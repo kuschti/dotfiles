@@ -1,0 +1,61 @@
+export PATH="$HOME/.bin:$PATH:/usr/local/bin"
+
+autoload colors; colors;
+autoload -Uz vcs_info
+setopt auto_cd
+setopt prompt_subst
+setopt no_beep
+setopt multios
+setopt cdablevarS
+
+# History Handling
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_dups
+HISTSIZE=20000
+HISTFILE=~/.zsh_history
+SAVEHIST=20000
+
+autoload -U compinit
+compinit -C
+
+# via: http://robots.thoughtbot.com/post/10849086566/cding-to-frequently-used-directories-in-zsh
+cdpath=($HOME/Dropbox $HOME/src)
+
+# Git completion stuff
+zstyle ':vcs_info:*' actionformats "(%{$fg[yellow]%}%b%{$reset_color%})|%a %f "
+zstyle ':vcs_info:*' formats       "(%{$fg[yellow]%}%b%{$reset_color%}) "
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+precmd () { vcs_info }
+
+# Prompt setup
+# PROMPT='%{$fg[red]%}%n@%m %{$fg[yellow]%}%~%{$reset_color%} ${vcs_info_msg_0_}$ '
+PROMPT='%{$fg[yellow]%}%~%{$reset_color%} ${vcs_info_msg_0_}⭕  '
+
+# Git aliases
+alias gb='git branch'
+alias gba='git branch -a'
+alias gcm='git commit -m'
+alias gd='git diff --word-diff'
+alias gl='git pull --rebase'
+alias gm='git mergetool'
+alias gp='git push'
+alias grep='grep --color'
+alias gs='git status'
+
+#  add composer to PATH
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# fix num-enter in iterm
+bindkey -s "^[OM" "^M"
+
+# Calling nvm use automatically in a directory with a .nvmrc file
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  fi
+}
+add-zsh-hook chpwd load-nvmrc

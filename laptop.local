@@ -1,0 +1,65 @@
+brew_remove() {
+  if brew_is_installed "$1"; then
+    fancy_echo "Removing %s ..." "$1"
+    brew uninstall "$@"
+  else
+    fancy_echo "Formula %s not found" "$1"
+  fi
+}
+
+apps=(
+  archiver
+  alfred
+  atom
+  daisydisk
+  dropbox
+  evernote
+  github-desktop
+  iterm2
+  imageoptim
+  sequel-pro
+  sketch
+  skype
+  slack
+  spectacle
+  spotify
+  svgo-gui
+  transmit
+  virtualbox
+  visual-studio-code
+  whatsapp
+  xquartz
+)
+
+fancy_echo "Installing apps"
+for pkg in "${apps[@]}"
+do
+  brew cask install $pkg
+done
+
+fancy_echo "Installing homebrew packages"
+brew bundle --file=- <<EOF
+tap "homebrew/dupes"
+
+brew "htop"
+brew "ssh-copy-id"
+brew "v8"
+brew "wget"
+EOF
+
+# Install NVM
+fancy_echo "Installing NVM"
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
+append_to_zshrc 'export NVM_DIR="$HOME/.nvm"'
+append_to_zshrc '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm'
+
+## Symlinks
+# Sublime Text 3
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+
+# Dotfiles
+if [ -r "$HOME/.rcrc" ]; then
+  fancy_echo "Updating dotfiles ..."
+  rcup
+fi
