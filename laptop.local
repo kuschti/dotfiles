@@ -22,7 +22,6 @@ brew_remove() {
 }
 
 apps=(
-  archiver
   alfred
   appcleaner
   atom
@@ -45,6 +44,7 @@ apps=(
   sublime-text
   tagger
   teamviewer
+  the-unarchiver
   transmit
   virtualbox
   visual-studio-code
