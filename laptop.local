@@ -49,7 +49,6 @@ apps=(
   virtualbox
   visual-studio-code
   whatsapp
-  xquartz
 )
 
 fancy_echo "Installing apps"
