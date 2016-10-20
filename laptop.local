@@ -72,6 +72,10 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | b
 append_to_zshrc 'export NVM_DIR="$HOME/.nvm"'
 append_to_zshrc '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
+# Install YARN
+fancy_echo "Installing YARN"
+curl -o- -L https://yarnpkg.com/install.sh | bash
+
 # From: https://gist.github.com/gtramontina/78c41be1077f1811fe47
 install_prezto() {
 fancy_echo "Installing Prezto"
