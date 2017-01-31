@@ -65,10 +65,13 @@
 
 [merge]
   tool = meld
-[diff]
-  #external = meld
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]
   prompt = false
+[diff]
+  tool = Kaleidoscope
+
 [credential]
   helper = cache --timeout=3600
 
