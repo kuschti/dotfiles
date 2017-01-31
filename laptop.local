@@ -107,3 +107,7 @@ if [ -r "$HOME/.rcrc" ]; then
   fancy_echo "Updating dotfiles ..."
   rcup
 fi
+
+# System Settings
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain KeyRepeat -int 1
