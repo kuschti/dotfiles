@@ -25,6 +25,9 @@ apps=(
   alfred
   appcleaner
   atom
+  bartender
+  carbon-copy-cloner
+  coconutbattery
   daisydisk
   dropbox
   evernote
@@ -33,20 +36,27 @@ apps=(
   hazel
   iterm2
   imageoptim
+  svgo-gui
   lastpass
   logitech-control-center
   mamp
+  sip
   sketch
+  sketch-toolbox
+  skitch
   skype
+  skype-for-business
   slack
   spectacle
   spotify
   sublime-text
   teamviewer
   the-unarchiver
+  theine
   transmit
   virtualbox
   visual-studio-code
+  vlc
   whatsapp
 )
 
