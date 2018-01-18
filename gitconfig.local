@@ -1,6 +1,6 @@
 [user]
- name = 'kuschti'
- email = 'kuschti@gmail.com'
+ name = kuschti
+ email = kuschti@gmail.com
 [github]
  user = kuschti
 
@@ -77,6 +77,5 @@
 
 [filter "lfs"]
   required = true
-  clean = git-lfs clean %f
+  clean = git-lfs clean -- %f
   smudge = git-lfs smudge %f
-
