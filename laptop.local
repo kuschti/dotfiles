@@ -27,12 +27,14 @@ apps=(
   atom
   bartender
   carbon-copy-cloner
+  clean-me
   coconutbattery
   daisydisk
+  day-o
   dropbox
   evernote
   github-desktop
-  google-drive
+  google-backup-and-sync
   hazel
   iterm2
   imageoptim
@@ -43,9 +45,8 @@ apps=(
   sip
   sketch
   sketch-toolbox
-  skitch
   skype
-  skype-for-business
+  skyfonts
   slack
   spectacle
   spotify
