@@ -27,7 +27,7 @@ apps=(
   adobe-creative-cloud
   alfred
   appcleaner
-  atom
+  # atom
   bartender
   carbon-copy-cloner
   clean-me
@@ -35,13 +35,13 @@ apps=(
   daisydisk
   day-o
   dropbox
-  evernote
+  # evernote
   firefox
-  github
+  # github
   google-backup-and-sync
   google-chrome
   hazel
-  iterm2
+  # iterm2
   imageoptim
   # logitech-control-center
   # mamp
@@ -49,12 +49,12 @@ apps=(
   # sketch
   # sketch-toolbox
   skype
-  skyfonts
+  # skyfonts
   slack
   # sonos
-  spectacle
+  # spectacle
   spotify
-  sublime-text
+  # sublime-text
   # teamviewer
   the-unarchiver
   transmit
@@ -82,11 +82,11 @@ EOF
 
 fancy_echo "installing MAS apps"
 mas install 1333542190 	# 1Password
-mas install 904280696 	# Things 3
+# mas install 904280696 	# Things 3
 mas install 1278508951 	# Trello
 mas isntall 955848755 	# Theine
-
-
+mas install 441258766   # magnet
+mas install 775737590   #ia writer
 
 # NVM
 if [ ! -d "$HOME/.nvm" ]; then
@@ -101,13 +101,9 @@ fi
 fancy_echo "Installing Prezto"
 git_clone_or_pull 'https://github.com/sorin-ionescu/prezto.git' "${ZDOTDIR:-$HOME}/.zprezto"
 
-# Base16 Shell
-git_clone_or_pull https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-
 # Cleanup
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
-brew cask cleanup
 
 
 ## Symlinks
