@@ -35,6 +35,8 @@
 [pull]
   # Pull current branch even if you've never pushed it before
   default = current
+[merge]
+  ff = false
 
 [color]
   diff = auto
@@ -60,17 +62,13 @@
 
 [core]
   #whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = atom --wait
+  editor = code --wait
   excludesfile = ~/.gitignore
 
 [merge]
   tool = meld
-[difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]
   prompt = false
-[diff]
-  tool = Kaleidoscope
 
 [credential]
   helper = cache --timeout=3600
@@ -79,3 +77,6 @@
   required = true
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge %f
+
+[include]
+  path = ~/.gitconfig.client
