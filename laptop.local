@@ -27,7 +27,7 @@ apps=(
   adobe-creative-cloud
   alfred
   appcleaner
-  atom
+  # atom
   bartender
   carbon-copy-cloner
   clean-me
@@ -35,7 +35,7 @@ apps=(
   daisydisk
   day-o
   dropbox
-  evernote
+  # evernote
   firefox
   github
   google-backup-and-sync
@@ -49,7 +49,8 @@ apps=(
   # sketch
   # sketch-toolbox
   skype
-  skyfonts
+  skype-for-business
+  # skyfonts
   slack
   # sonos
   spectacle
@@ -62,6 +63,7 @@ apps=(
   visual-studio-code
   vlc
   whatsapp
+  webstorm
 )
 
 fancy_echo "Installing apps"
@@ -82,11 +84,11 @@ EOF
 
 fancy_echo "installing MAS apps"
 mas install 1333542190 	# 1Password
-mas install 904280696 	# Things 3
+# mas install 904280696 	# Things 3
 mas install 1278508951 	# Trello
-mas isntall 955848755 	# Theine
-
-
+mas install 955848755 	# Theine
+mas install 1384080005  # Tweetbot 3
+mas install 990588172   # Gestimer
 
 # NVM
 if [ ! -d "$HOME/.nvm" ]; then
@@ -107,8 +109,6 @@ git_clone_or_pull https://github.com/chriskempson/base16-shell.git ~/.config/bas
 # Cleanup
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
-brew cask cleanup
-
 
 ## Symlinks
 # Sublime Text 3
@@ -122,7 +122,7 @@ if [ -r "$HOME/.rcrc" ]; then
 fi
 
 ## OSX System Settings
-
+fancy_echo "setup osx system settings ..."
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs) (default: not set).
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
@@ -169,3 +169,4 @@ chflags nohidden ~/Library
 
 # Always show scrollbars (default: WhenScrolling).
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+fancy_echo "Finish laptop.local"
