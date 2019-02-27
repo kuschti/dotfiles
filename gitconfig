@@ -43,8 +43,6 @@
 [merge]
   ff = false
   tool = meld
-[commit]
-  template = ~/.gitmessage
 [fetch]
   prune = true
 [rebase]
