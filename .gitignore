@@ -2,3 +2,4 @@
 !bin
 vim/bundle/
 *.client
+.idea

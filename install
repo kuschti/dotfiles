@@ -1,0 +1,149 @@
+#!/bin/sh
+
+# Welcome to the thoughtbot laptop script!
+# Be prepared to turn your laptop (or desktop, no haters here)
+# into an awesome development machine.
+
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\n$fmt\n" "$@"
+}
+
+# From: https://gist.github.com/gtramontina/34fd3223ff754f13df56
+git_clone_or_pull() {
+  local REPOSRC=$1
+  local LOCALREPO=$2
+  local LOCALREPO_VC_DIR=$LOCALREPO/.git
+  if [ ! -d $LOCALREPO_VC_DIR ]; then
+    git clone --recursive $REPOSRC $LOCALREPO
+  else
+    pushd $LOCALREPO
+    git pull $REPOSRC && git submodule update --init --recursive
+    popd
+  fi
+}
+
+append_to_zshrc() {
+  local text="$1" zshrc
+  local skip_new_line="${2:-0}"
+
+  if [ -w "$HOME/.zshrc.local" ]; then
+    zshrc="$HOME/.zshrc.local"
+  else
+    zshrc="$HOME/.zshrc"
+  fi
+
+  if ! grep -Fqs "$text" "$zshrc"; then
+    if [ "$skip_new_line" -eq 1 ]; then
+      printf "%s\n" "$text" >> "$zshrc"
+    else
+      printf "\n%s\n" "$text" >> "$zshrc"
+    fi
+  fi
+}
+
+# shellcheck disable=SC2154
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+
+if [ ! -d "$HOME/.bin/" ]; then
+  mkdir "$HOME/.bin"
+fi
+
+if [ ! -f "$HOME/.zshrc" ]; then
+  touch "$HOME/.zshrc"
+fi
+
+# shellcheck disable=SC2016
+append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
+
+HOMEBREW_PREFIX="/usr/local"
+
+if [ -d "$HOMEBREW_PREFIX" ]; then
+  if ! [ -r "$HOMEBREW_PREFIX" ]; then
+    sudo chown -R "$LOGNAME:admin" /usr/local
+  fi
+else
+  sudo mkdir "$HOMEBREW_PREFIX"
+  sudo chflags norestricted "$HOMEBREW_PREFIX"
+  sudo chown -R "$LOGNAME:admin" "$HOMEBREW_PREFIX"
+fi
+
+update_shell() {
+  local shell_path;
+  shell_path="$(command -v zsh)"
+
+  fancy_echo "Changing your shell to zsh ..."
+  if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
+    fancy_echo "Adding '$shell_path' to /etc/shells"
+    sudo sh -c "echo $shell_path >> /etc/shells"
+  fi
+  sudo chsh -s "$shell_path" "$USER"
+}
+
+case "$SHELL" in
+  */zsh)
+    if [ "$(command -v zsh)" != '/usr/local/bin/zsh' ] ; then
+      update_shell
+    fi
+    ;;
+  *)
+    update_shell
+    ;;
+esac
+
+if ! command -v pip >/dev/null; then
+  fancy_echo "Installing PIP ..."
+  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  python get-pip.py
+fi
+
+if [ -d $HOME/.oh-my-zsh ]; then
+  fancy_echo "Installing oh-my-zsh ..."
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  # ln -s ~/dotfiles/.oh-my-zsh/themes/cobalt2.zsh.theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
+
+  # Install Powerline
+  fancy_echo "Installing Powerline and Fonts ..."
+  pip install --user powerline-status
+
+  # Install Powerline fonts
+  git_clone_or_pull 'https://github.com/powerline/fonts.git' "$HOME/powerlinefonts"
+  # cd $HOME/powerlinefonts
+  $HOME/powerlinefonts/install.sh
+#  cd ..
+#  rm -rf powerlinefonts
+#  cd dotfiles
+fi
+
+# Install apps and binaries with Brew
+source ./brew.sh
+
+# Install Mac Appstore Apps
+source ./masapps.sh
+
+# Set MacOS Settings
+source ./osx.sh
+
+# NVM
+if [ ! -d "$HOME/.nvm" ]; then
+  fancy_echo "Installing NVM"
+  git_clone_or_pull 'https://github.com/creationix/nvm.git' "$HOME/.nvm"
+  cd "$HOME/.nvm" && git checkout `git describe --abbrev=0 --tags`
+  . "$HOME/.nvm/nvm.sh"
+fi
+
+# Add Symlinks
+source ./symlinks.sh
+
+# Dotfiles
+if [ -r "$HOME/.rcrc" ]; then
+  fancy_echo "Updating dotfiles ..."
+  rcup
+fi
+
+fancy_echo "Finish laptop.local"
