@@ -63,7 +63,6 @@ apps=(
   imageoptim
   # logitech-control-center
   # mamp
-  sip
   # sketch
   # sketch-toolbox
   skype
