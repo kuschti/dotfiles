@@ -98,27 +98,21 @@ esac
 if ! command -v pip >/dev/null; then
   fancy_echo "Installing PIP ..."
   curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  python get-pip.py
+  sudo python get-pip.py
 fi
 
-if [ -d $HOME/.oh-my-zsh ]; then
+if [ ! -d $HOME/.oh-my-zsh ]; then
   fancy_echo "Installing oh-my-zsh ..."
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-  # ln -s ~/dotfiles/.oh-my-zsh/themes/cobalt2.zsh.theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
-
-  # Install Powerline
-  fancy_echo "Installing Powerline and Fonts ..."
-  pip install --user powerline-status
-
-  # Install Powerline fonts
-  git_clone_or_pull 'https://github.com/powerline/fonts.git' "$HOME/powerlinefonts"
-  # cd $HOME/powerlinefonts
-  $HOME/powerlinefonts/install.sh
-#  cd ..
-#  rm -rf powerlinefonts
-#  cd dotfiles
 fi
+
+# Install Powerline
+fancy_echo "Installing Powerline and Fonts ..."
+pip install --user powerline-status
+
+# Install Powerline fonts
+git_clone_or_pull 'https://github.com/powerline/fonts.git' "$HOME/powerlinefonts"
+$HOME/powerlinefonts/install.sh
 
 # Install apps and binaries with Brew
 source ./brew.sh
