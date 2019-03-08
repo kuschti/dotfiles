@@ -132,6 +132,9 @@ if [ ! -d "$HOME/.nvm" ]; then
 fi
 
 # Add Symlinks
+source ./npm.sh
+
+# Add Symlinks
 source ./symlinks.sh
 
 # Dotfiles
