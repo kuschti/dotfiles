@@ -19,8 +19,24 @@ Clone onto your laptop:
 
     git clone git://github.com/kuschti/dotfiles.git
 
-(Or, [fork and keep your fork
-updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
+Review the script (avoid running scripts you haven't read!):
+
+```sh
+less mac
+```
+
+Execute the downloaded script:
+
+```sh
+sh install 2>&1 | tee ~/laptop.log
+```
+
+Optionally, review the log:
+
+```sh
+less ~/laptop.log
+```
+
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
