@@ -14,6 +14,7 @@ brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
 tap "homebrew/services"
+tap "homebrew/cask-drivers"
 tap "caskroom/cask"
 
 # Unix
@@ -62,6 +63,7 @@ apps=(
   # iterm2
   imageoptim
   # logitech-control-center
+  logitech-options
   # mamp
   # sketch
   # sketch-toolbox
