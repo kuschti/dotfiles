@@ -15,6 +15,7 @@ brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
 tap "homebrew/services"
 tap "homebrew/cask-drivers"
+tap "homebrew/cask-versions"
 tap "caskroom/cask"
 
 # Unix
@@ -56,6 +57,7 @@ apps=(
   dropbox
   # evernote
   firefox
+  firefox-developer-edition
   # github
   google-backup-and-sync
   google-chrome
