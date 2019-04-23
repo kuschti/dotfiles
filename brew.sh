@@ -53,7 +53,6 @@ apps=(
   clean-me
   coconutbattery
   daisydisk
-  day-o
   dropbox
   # evernote
   firefox
@@ -64,6 +63,7 @@ apps=(
   hazel
   # iterm2
   imageoptim
+  itsycal
   # logitech-control-center
   logitech-options
   # mamp
