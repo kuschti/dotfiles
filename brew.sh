@@ -53,7 +53,7 @@ apps=(
   clean-me
   coconutbattery
   daisydisk
-  dropbox
+  # dropbox
   # evernote
   firefox
   firefox-developer-edition
@@ -61,6 +61,7 @@ apps=(
   google-backup-and-sync
   google-chrome
   hazel
+  hyper
   # iterm2
   imageoptim
   itsycal
@@ -76,7 +77,8 @@ apps=(
   # sonos
   # spectacle
   spotify
-  # sublime-text
+  sublime-text
+  synology-drive
   # teamviewer
   the-unarchiver
   transmit
