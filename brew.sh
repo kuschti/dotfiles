@@ -55,6 +55,7 @@ apps=(
   daisydisk
   # dropbox
   # evernote
+  figma
   firefox
   firefox-developer-edition
   fork
