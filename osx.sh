@@ -57,13 +57,32 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+# Icons for hard drives, servers, and removable media on the desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop         -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop     -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop     -bool true
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 # Finder > Preferences > Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder > Preferences > Show wraning before changing an extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
 # Finder > View > As List
+# Preferred view style
+# Icon View   : `icnv`
+# List View   : `Nlsv`
+# Column View : `clmv`
+# Cover Flow  : `Flwv`
+# After configuring preferred view style, clear all `.DS_Store` files
+# to ensure settings are applied for every directory
+# sudo find / -name ".DS_Store" --delete
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Finder > View > Show Path Bar
@@ -71,6 +90,20 @@ defaults write com.apple.finder ShowPathbar -bool true
 
 # Finder > View > Show Path Bar
 defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder When performing a search: [Search the Current Folder]
+defaults write com.apple.finder FXDefaultSearchScope 'SCcf'
+
+# New window target
+# Computer     : `PfCm`
+# Volume       : `PfVo`
+# $HOME        : `PfHm`
+# Desktop      : `PfDe`
+# Documents    : `PfDo`
+# All My Files : `PfAF`
+# Other…       : `PfLo`
+defaults write com.apple.finder NewWindowTarget -string 'PfHm'
+#defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Show the ~/Library folder (default: hidden).
 chflags nohidden ~/Library
