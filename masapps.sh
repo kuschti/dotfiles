@@ -1,4 +1,4 @@
-fancy_echo "installing MAS apps"
+fancy_echo "installing MAS apps (you should need login first"
 mas install 1333542190 	# 1Password
 mas install 1278508951 	# Trello
 mas install 955848755 	# Theine

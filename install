@@ -137,6 +137,11 @@ source ./npm.sh
 # Add Symlinks
 source ./symlinks.sh
 
+# Create src folder
+if [ ! -d "$HOME/src/" ]; then
+  mkdir "$HOME/src"
+fi
+
 # Dotfiles
 if [ -r "$HOME/.rcrc" ]; then
   fancy_echo "Updating dotfiles ..."
