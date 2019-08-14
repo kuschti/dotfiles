@@ -11,4 +11,3 @@ tags
 tmp/**/*
 !tmp/cache/.keep
 *.pyc
-dotfiles.log
