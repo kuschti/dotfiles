@@ -57,6 +57,7 @@ apps=(
   # evernote
   firefox
   firefox-developer-edition
+  fork
   # github
   google-backup-and-sync
   google-chrome

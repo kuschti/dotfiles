@@ -22,19 +22,19 @@ Clone onto your laptop:
 Review the script (avoid running scripts you haven't read!):
 
 ```sh
-less mac
+less install
 ```
 
 Execute the downloaded script:
 
 ```sh
-sh install 2>&1 | tee ~/laptop.log
+sh install 2>&1 | tee ~/dotfiles/dotfiles.log
 ```
 
 Optionally, review the log:
 
 ```sh
-less ~/laptop.log
+less ~/dotfiles/dotfiles.log
 ```
 
 

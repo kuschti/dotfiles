@@ -1,6 +1,6 @@
 [user]
- name = kuschti
- email = kuschti@gmail.com
+  name = kuschti
+  email = kuschti@gmail.com
 [github]
  user = kuschti
 [push]
@@ -47,8 +47,6 @@
   prune = true
 [rebase]
   autosquash = true
-[include]
-  path = ~/.gitconfig.local
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -58,3 +56,7 @@
   prompt = false
 [credential]
   helper = cache --timeout=3600
+[include]
+  path = ~/.gitconfig.local
+[includeIf "gitdir:~/src/css/"]
+  path = ~/.gitconfig-css
