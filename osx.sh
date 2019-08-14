@@ -7,7 +7,7 @@ fancy_echo "setup osx system settings ..."
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # System Preferences > Dock > Size:
-defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock tilesize -int 48
 
 # System Preferences > Dock > Magnification:
 defaults write com.apple.dock magnification -bool false
