@@ -1,38 +1,100 @@
 ## OSX System Settings
-fancy_echo "setup osx system settings ..."
-# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs) (default: not set).
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+# https://www.defaults-write.com/tag/dark-mode/
 
-# Automatically hide and show the Dock (default: false).
+fancy_echo "setup osx system settings ..."
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# System Preferences > Dock > Size:
+defaults write com.apple.dock tilesize -int 36
+
+# System Preferences > Dock > Magnification:
+defaults write com.apple.dock magnification -bool false
+
+# System Preferences > Dock > Minimize windows using: Scale effect
+defaults write com.apple.dock mineffect -string "scale"
+
+# System Preferences > Dock > Minimize windows into application icon
+#defaults write com.apple.dock minimize-to-application -bool true
+
+# System Preferences > Dock > Automatically hide and show the Dock:
 defaults write com.apple.dock autohide -bool true
+
+# System Preferences > Dock > Automatically hide and show the Dock (duration)
+#defaults write com.apple.dock autohide-time-modifier -float 0.5
+
+# System Preferences > Dock > Automatically hide and show the Dock (delay)
+#defaults write com.apple.dock autohide-delay -float 0
+
+# System Preferences > Dock > Show indicators for open applications
+defaults write com.apple.dock show-process-indicators -bool true
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Disable press-and-hold for keys in favor of key repeat (default: true).
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+# System Preferences > Keyboard >
 # Set a blazingly fast keyboard repeat rate (default: 60).
 defaults write NSGlobalDomain KeyRepeat -int 1
 
-# Show all filename extensions in Finder (default: false).
+# System Preferences > Keyboard >
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs) (default: not set).
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# System Preferences > Trackpad > Tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Completely Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Finder > Preferences > Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder > Preferences > Show wraning before changing an extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Finder > View > As List
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Finder > View > Show Path Bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Finder > View > Show Path Bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Show the ~/Library folder (default: hidden).
+chflags nohidden ~/Library
 
 # Expand save panel (default: false).
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-# Disable auto-correct (default: true).
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
 # Avoid creating .DS_Store files on network volumes (default: false).
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# Require password 5 seconds after sleep or screen saver begins.
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# System Preferences > Security > Require password 5 seconds after sleep or screen saver begins.
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 5
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # Enable Safari’s debug menu (default: false).
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
-# Show the ~/Library folder (default: hidden).
-chflags nohidden ~/Library
+# Disable auto-correct (default: true).
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
 
 # Disable shadow in screenshots (default: false).
 # defaults write com.apple.screencapture disable-shadow -bool true
@@ -46,3 +108,11 @@ chflags nohidden ~/Library
 
 # Always show scrollbars (default: WhenScrolling).
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+# Kill affected apps
+for app in "Dock" "Finder"; do
+  killall "${app}" > /dev/null 2>&1
+done
+
+# Done
+fancy_echo "Done. Note that some of these changes require a logout/restart to take effect."
