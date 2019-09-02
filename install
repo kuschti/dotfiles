@@ -148,4 +148,4 @@ if [ -r "$HOME/.rcrc" ]; then
   rcup
 fi
 
-fancy_echo "Finish laptop.local"
+fancy_echo "Finish dotfiles install"
