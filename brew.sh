@@ -70,6 +70,7 @@ apps=(
   # logitech-control-center
   logitech-options
   # mamp
+  microsoft-edge-beta
   # sketch
   # sketch-toolbox
   skype

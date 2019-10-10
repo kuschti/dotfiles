@@ -131,7 +131,7 @@ if [ ! -d "$HOME/.nvm" ]; then
   . "$HOME/.nvm/nvm.sh"
 fi
 
-# Add Symlinks
+# Add global npm packages
 source ./npm.sh
 
 # Add Symlinks
