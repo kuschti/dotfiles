@@ -16,7 +16,6 @@ tap "thoughtbot/formulae"
 tap "homebrew/services"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
-tap "caskroom/cask"
 
 # Unix
 brew "git"

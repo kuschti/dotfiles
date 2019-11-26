@@ -126,9 +126,10 @@ source ./osx.sh
 # NVM
 if [ ! -d "$HOME/.nvm" ]; then
   fancy_echo "Installing NVM"
-  git_clone_or_pull 'https://github.com/creationix/nvm.git' "$HOME/.nvm"
+  git_clone_or_pull 'https://github.com/nvm-sh/nvm.git' "$HOME/.nvm"
   cd "$HOME/.nvm" && git checkout `git describe --abbrev=0 --tags`
   . "$HOME/.nvm/nvm.sh"
+  cd "$HOME/dotfiles"
 fi
 
 # Add global npm packages
