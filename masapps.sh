@@ -7,4 +7,6 @@ mas install 990588172   # Gestimer
 mas install 441258766   # magnet
 mas install 775737590   # ia writer
 mas install 1287239339  # ColorSlurp
+mas install 784801555   # OneNote
+mas install 1482454543  # Twitter for Mac
 # mas install 904280696 	# Things 3

@@ -45,13 +45,14 @@ EOF
 apps=(
   adobe-creative-cloud
   alfred
-  appcleaner
+  # appcleaner
   # atom
   bartender
   carbon-copy-cloner
   clean-me
-  coconutbattery
+  # coconutbattery
   daisydisk
+  docker
   # dropbox
   # evernote
   figma
@@ -64,7 +65,7 @@ apps=(
   hazel
   hyper
   # iterm2
-  imageoptim
+  # imageoptim
   itsycal
   # logitech-control-center
   logitech-options
