@@ -72,6 +72,7 @@ apps=(
   # mamp
   microsoft-edge-beta
   # onedrive
+  rocket
   # sketch
   # sketch-toolbox
   skype
