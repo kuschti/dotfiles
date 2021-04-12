@@ -1,6 +1,6 @@
 [user]
   name = kuschti
-  email = kuschti@gmail.com
+	email = 1425929+kuschti@users.noreply.github.com
 [github]
  user = kuschti
 [push]
@@ -60,3 +60,9 @@
   path = ~/.gitconfig.local
 [includeIf "gitdir:~/src/css/"]
   path = ~/.gitconfig-css
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

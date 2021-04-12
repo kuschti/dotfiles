@@ -48,6 +48,7 @@ apps=(
   # appcleaner
   # atom
   bartender
+  brave-browser
   carbon-copy-cloner
   clean-me
   # coconutbattery
@@ -65,7 +66,7 @@ apps=(
   google-chrome
   hazel
   hyper
-  # iterm2
+  iterm2
   # imageoptim
   itsycal
   jetbrains-toolbox
@@ -80,6 +81,7 @@ apps=(
   skype-for-business
   # skyfonts
   slack
+  sourcetree
   # sonos
   # spectacle
   spotify
@@ -87,12 +89,17 @@ apps=(
   synology-drive
   # teamviewer
   the-unarchiver
+  theine
   transmit
+  transmission
+  # vagrant
+  # vagrant-manager
   virtualbox
   visual-studio-code
   vlc
-  whatsapp
   webstorm
+  whatsapp
+  youtube-dl
 )
 
 fancy_echo "Installing apps"
