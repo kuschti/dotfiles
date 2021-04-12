@@ -52,6 +52,7 @@ apps=(
   clean-me
   # coconutbattery
   daisydisk
+  discord
   docker
   # dropbox
   # evernote
@@ -67,10 +68,12 @@ apps=(
   # iterm2
   # imageoptim
   itsycal
+  jetbrains-toolbox
   # logitech-control-center
   logitech-options
   # mamp
   microsoft-edge-beta
+  responsively
   # sketch
   # sketch-toolbox
   skype
