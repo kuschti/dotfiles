@@ -10,3 +10,8 @@ mas install 1287239339  # ColorSlurp
 mas install 784801555   # OneNote
 mas install 1482454543  # Twitter for Mac
 # mas install 904280696 	# Things 3
+mas install 1544743900  # hush blocker
+mas install 405399194   # kindle
+mas install 1470584107  # Dato
+mas install 1449412482  # Reeder4
+mas install 463362050   # PhotoSweeper

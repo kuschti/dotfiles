@@ -89,6 +89,7 @@ apps=(
   the-unarchiver
   theine
   transmit
+  transmission
   # vagrant
   # vagrant-manager
   virtualbox
@@ -96,6 +97,7 @@ apps=(
   vlc
   webstorm
   whatsapp
+  youtube-dl
 )
 
 fancy_echo "Installing apps"
